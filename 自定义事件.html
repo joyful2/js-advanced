@@ -10,14 +10,21 @@
     <button  >自定义事件  </button>
 <script>
 window.onload = ()=>{
-    const eve = new Event('joeCustom');
+    const eve = new Event('joeEvent');
     const button = document.querySelector('button')
-    button.addEventListener('joeCustom',(e)=>{
-        console.log('joeCustom:',e);
+    button.addEventListener('joeEvent',(e)=>{
+        console.log('joeEvent:',e);
      })
+
+    const customEve = new CustomEvent('customEvent',{detail:'要传递的data'});
+    button.addEventListener('customEvent',(e,data)=>{
+        console.log('customEvent e:',e);
+        console.log('e.detail:',e.detail);
+     })
+
     button.onclick = ()=>{
-        console.log('onclick')
-        button.dispatchEvent(eve,'wt')
+         button.dispatchEvent(eve )
+        button.dispatchEvent(customEve)
     }
  
 }
