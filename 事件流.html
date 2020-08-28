@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件流</title>
+</head>
+<body>
+    <button > 事件流</button>
+
+    <script>
+
+        window.onload = function(){
+            const btn =  document.querySelectorAll('button')[0];
+            btn.addEventListener('click', ()=>{
+                console.log('btn 捕获');
+            },true)
+            window.addEventListener('click', ()=>{
+                console.log('window 捕获');
+            },true)
+            document.addEventListener('click', ()=>{
+                console.log('document 捕获');
+            },true)
+            document.documentElement.addEventListener('click', ()=>{
+                console.log('html 捕获');
+            },true)
+            document.body.addEventListener('click', ()=>{
+                console.log('body 捕获');
+            },true)
+
+
+            btn.addEventListener('click', ()=>{
+                console.log('btn 冒泡');
+            },false)
+            window.addEventListener('click', ()=>{
+                console.log('window 冒泡');
+            },false)
+            document.addEventListener('click', ()=>{
+                console.log('document 冒泡');
+            },false)
+            document.documentElement.addEventListener('click', ()=>{
+                console.log('html 冒泡');
+            },false)
+            document.body.addEventListener('click', ()=>{
+                console.log('body 冒泡');
+            },false)
+    
+        }
+    </script>
+</body>
+</html>

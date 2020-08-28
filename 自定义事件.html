@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义事件</title>
+</head>
+<body>
+    
+    <button  >自定义事件  </button>
+<script>
+window.onload = ()=>{
+    const eve = new Event('joeCustom');
+    const button = document.querySelector('button')
+    button.addEventListener('joeCustom',(e)=>{
+        console.log('joeCustom:',e);
+     })
+    button.onclick = ()=>{
+        console.log('onclick')
+        button.dispatchEvent(eve,'wt')
+    }
+ 
+}
+
+</script>
+</body>
+</html>
