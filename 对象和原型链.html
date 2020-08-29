@@ -16,9 +16,8 @@
       Fun.prototype = () => {
         age: 18;
       };
-      var fun1 = new Fun("joe");
-      console.log("fun1.constructor:", fun1.constructor);
-      console.log("fun1.__proto__:", fun1.__proto__);
+      var fun = new Fun("joe");
+      console.log("fun.constructor:", fun.constructor);
 
       console.log(
         "Fun.__proto__ === Function.prototype：",
@@ -27,6 +26,41 @@
       console.log(
         "Fun.prototype.__proto__ === Function.prototype：",
         Fun.prototype.__proto__ === Function.prototype // todo :为什么这里不是Object.prototype?
+      );
+
+      console.log(
+        "Fun.constructor === Function:",
+        Fun.constructor === Function
+      );
+      console.log(
+        "Fun.prototype.constructor === Object:",
+        Fun.prototype.constructor === Object
+      );
+      console.log(
+        "Fun.prototype.constructor === Fun:",
+        Fun.prototype.constructor === Fun
+      );
+      console.log(
+        "Fun.prototype.__proto__ === Object.prototype:",
+        Fun.prototype.__proto__ === Object.prototype
+      );
+      console.log(
+        "Fun.prototype instanceof  Object:",
+        Fun.prototype instanceof Object
+      );
+
+      console.log(
+        "Fun.prototype.__proto__ === Object:",
+        Fun.prototype.__proto__ === Object // todo: Fun.prototype instanceof Object是true，为什么这里是false?
+      );
+      console.log(
+        "Fun.prototype.constructor === Function:",
+        Fun.prototype.constructor === Function
+      );
+      // Function是Object的构造函数，但是二者关系很复杂
+      console.log(
+        "Object.constructor === Function:",
+        Object.constructor === Function
       );
     </script>
   </body>
