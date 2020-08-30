@@ -7,7 +7,23 @@
   </head>
   <body>
     <script>
-      // todo: 创建对象的三个方式
+      //   一. 创建对象的三个方式
+      // 1.字面量方式
+      var obj1 = { name: "joe" };
+      var obj2 = new Object({ name: "joe" });
+      console.log("obj1:", obj1);
+      console.log("obj2:", obj2);
+      // 2. 构造函数方式：
+      function Func() {
+        this.name = "test";
+      }
+      var func1 = new Func();
+      console.log("func1:", func1);
+
+      // 3. Object.create方式
+      var P = { name: "pName" };
+      var obj = Object.create(P); // obj的原型是P
+      console.log("obj:", obj);
 
       // 2.原型链相关
       function Fun(name) {
@@ -19,34 +35,60 @@
       var fun = new Fun("joe");
       console.log("fun.constructor:", fun.constructor);
 
+      //  ==========  所有函数的构造函数是Function,继承自Function.prototype，所有对象的构造函数是Object,都继承自Object.prototype========================================
+      // Fun.__proto__和Fun.prototype.__proto__都指向Function.prototype;
       console.log(
         "Fun.__proto__ === Function.prototype：",
         Fun.__proto__ === Function.prototype
       );
       console.log(
         "Fun.prototype.__proto__ === Function.prototype：",
-        Fun.prototype.__proto__ === Function.prototype // todo :为什么这里不是Object.prototype?
+        Fun.prototype.__proto__ === Function.prototype
       );
 
+      var obj = {};
       console.log(
-        "Fun.constructor === Function:",
-        Fun.constructor === Function
-      );
-      console.log(
-        "Fun.prototype.constructor === Object:",
-        Fun.prototype.constructor === Object
-      );
-      console.log(
-        "Fun.prototype.constructor === Fun:",
-        Fun.prototype.constructor === Fun
+        "obj.__proto__ === Object.prototype:",
+        obj.__proto__ === Object.prototype
       );
       console.log(
         "Fun.prototype.__proto__ === Object.prototype:",
         Fun.prototype.__proto__ === Object.prototype
       );
+
       console.log(
-        "Fun.prototype instanceof  Object:",
+        "Fun.prototype.constructor === Function:",
+        Fun.prototype.constructor === Function
+      );
+      console.log(
+        "Fun.constructor === Function:",
+        Fun.constructor === Function
+      );
+
+      console.log("obj.constructor === Object:", obj.constructor === Object);
+      //  ==========  所有函数的构造函数是Function,继承自Function.prototype，所有对象的构造函数是Object,都继承自Object.prototype========================================
+
+      console.log(
+        "Fun.prototype.constructor === Object:",
+        Fun.prototype.constructor === Object
+      );
+      console.log(
+        "Fun.prototype.constructor === Function:",
+        Fun.prototype.constructor === Function
+      );
+      console.log("Fun.prototype :", Fun.prototype);
+
+      console.log(
+        "Fun.prototype instanceof Object:",
         Fun.prototype instanceof Object
+      );
+      console.log(
+        "Fun.prototype instanceof  Function:",
+        Fun.prototype instanceof Function
+      );
+      console.log(
+        "Fun.prototype === Object.prototype:",
+        Fun.prototype === Object.prototype
       );
 
       console.log(

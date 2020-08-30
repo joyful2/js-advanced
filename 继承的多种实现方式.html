@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   <!--  : 1.借用构造函数  -->
+      function Parent1() {
+        this.name = "Parent1";
+        this.type = "Parent1";
+      }
+
+      function Child1() {
+        Parent1.call(this);
+        this.name = "child1";
+      }
+      const child1 = new Child1();
+      //   console.log("child1:", child1);
+      //   console.log("child1 instanceof Child1:", child1 instanceof Child1);
+      //   console.log("child1.constructor:", child1.constructor);
+
+      //   <!--  : 2 原型链方式-->
+
+      function Parent2() {
+        this.name = "Parent2";
+        this.test = [1, 2];
+      }
+      function Child2() {
+        this.name = "Child2";
+      }
+      Child2.prototype = new Parent2();
+      //   Child2.prototype = Parent2.prototype;
+      const child2a = new Child2();
+      const child2b = new Child2();
+      child2b.test.push(3); // 缺点：改变构造函数中的属性会改变所有实例的属性
+      //   console.log("child2a:", child2a);
+      //   console.log("child2b:", child2b);
+
+      //   <!--    3 组合方式  -->
+
+      function Parent3() {
+        this.name = "Parent3";
+        this.test = [1, 2];
+      }
+
+      function Child3() {
+        Parent3.call(this);
+        this.name = "Child3";
+      }
+
+      //   Child3.prototype = Parent3.prototype; // 缺点：导致Child3的实例的constructor都指向Parent3
+      Child3.prototype = Object.create(Parent3.prototype); //__proto__
+      Child3.prototype.constructor = Child3;
+
+      var child3 = new Child3();
+      var child3a = new Child3();
+      var child3b = new Child3();
+      child3b.test.push(3);
+
+      console.log("child3:", child3);
+      console.log("child3a:", child3a);
+      console.log("child3b:", child3b);
+      console.log("child3 instanceof Parent3:", child3 instanceof Parent3);
+      console.log("child3.constructor:", child3.constructor);
+      console.log(
+        "Parent3.prototype.constructor === Parent3:",
+        Parent3.prototype.constructor === Parent3
+      );
+    </script>
+  </body>
+</html>
