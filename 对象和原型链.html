@@ -104,6 +104,25 @@
         "Object.constructor === Function:",
         Object.constructor === Function
       );
+
+      // new 运算符的实现
+      function newMethod(Func){
+        const obj = Object.create(Func.prototype)
+        const returnVal = Func.call(obj)
+        if(toString.call(returnVal) === "[object Object]"){
+          return returnVal
+        } else {
+          return obj
+        }
+      }
+      function FuncTest(name){
+        this.name='joe'
+      }
+      FuncTest.prototype = {
+        age:'18'
+      }
+      var func = newMethod(FuncTest)
+      console.log('func:',func)
     </script>
   </body>
 </html>
