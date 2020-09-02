@@ -122,7 +122,18 @@
         age:'18'
       }
       var func = newMethod(FuncTest)
-      console.log('func:',func)
+      // console.log('func:',func)
+      console.log('func.__proto__.constructor===Function.prototype:',func.__proto__.constructor===Function.prototype)
+      console.log('func.__proto__.constructor===Function:',func.__proto__.constructor===Function)
+      console.log('FuncTest.prototype.constructor===Function:',FuncTest.prototype.constructor===Function)
+
+      console.log('func.__proto__.constructor===FuncTest:',func.__proto__.constructor===FuncTest)
+      console.log('FuncTest.prototype.constructor===FuncTest:',FuncTest.prototype.constructor===FuncTest)
+      // console.log('FuncTest.prototype ===func.__proto__:',FuncTest.prototype ===func.__proto__)
+      // console.log('FuncTest.constructor===Function:',FuncTest.constructor===Function)
+
+
+
     </script>
   </body>
 </html>
