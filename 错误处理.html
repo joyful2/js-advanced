@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+ 
+        window.addEventListener(
+          "error",
+          function(e)  {
+            console.log("捕获阶段才能捕获资源加载错误:", e);
+
+            // 错误上报
+            (new Image()).src='http://baidu.com/errCenter.js?err=错误信息'
+          },
+          true
+        );
+  
+        alert(testd)
+      </script>
+  </head>
+  <!-- <body>
+      拿到跨域的资源加载错误信息：
+      1.script标签加上crossorigin 
+      2.服务端设置access-control-allow-origin:'*' -->
+
+    <script src="//baidu.com/test.js" crossorigin></script>
+ 
+  </body>
+</html>
